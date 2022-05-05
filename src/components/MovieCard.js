@@ -1,0 +1,43 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { Card, Button, Icon, Image } from "semantic-ui-react";
+
+const MovieCard = ({ movie, deleteMovie }) => (
+  <Card>
+    <Image src={movie.cover} wrapped ui={false} />
+    <Card.Content>
+      <Card.Header>{movie.title}</Card.Header>
+      {/* <Card.Meta>
+        <span className="date">Created at {movie.createdAt}</span>
+      </Card.Meta>
+      <Card.Description>
+        Matthew is a musician living in Nashville.
+      </Card.Description> */}
+    </Card.Content>
+    <Card.Content extra>
+      <div className="ui two buttons">
+        <Button
+          animated
+          color="red"
+          size="mini"
+          onClick={() => {
+            deleteMovie(movie.id);
+          }}
+        >
+          <Button.Content visible>Del</Button.Content>
+          <Button.Content hidden>
+            <Icon name="trash alternate" />
+          </Button.Content>
+        </Button>
+        <Button animated size="mini" as={Link} to={`/movies/new/${movie.id}`}>
+          <Button.Content visible>Edit</Button.Content>
+          <Button.Content hidden>
+            <Icon name="pencil" />
+          </Button.Content>
+        </Button>
+      </div>
+    </Card.Content>
+  </Card>
+);
+
+export default MovieCard;
